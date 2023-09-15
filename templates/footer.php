@@ -4,7 +4,7 @@
 <!--inicio footer -->
 <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
     <div class="align-items-center">
-        <span class="text-muted">2023 TUDAI, UNICEN</span>
+        <span class="text-muted">Nahuel Grosso 2023 TUDAI, UNICEN</span>
     </div>
 </footer>
 

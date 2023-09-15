@@ -1,0 +1,16 @@
+/* Estilos Formulario */
+form{
+    background-color: #2cc019;
+}
+/* FIN Estilos Formulario */
+
+/* Estilos de la lista de tareas */
+.tareas {
+    width: 50%;
+}
+
+.list-group-item {
+    background-color: #ede8e8;
+}
+
+/* FIN Estilos de la lista de tareas */
