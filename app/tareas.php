@@ -40,26 +40,38 @@ function verTareas()
 <?php
     function agregarTarea()
     {
-    //VER VALIDACION DE DATOS!!!
+    //VALIDACION DE DATOS!!!
+    if(
+        !empty($_POST['tarea'])&&
+        !empty($_POST['prioridad'])        
+    ){
 
     //Obtencion de los datos del formulario.
     $tarea = $_POST['tarea'];
     $descripcion = $_POST['descripcion'];
     $prioridad = $_POST['prioridad'];
 
-    //Enviar los datos a la BBDD
-    $id = insertarTarea($tarea, $descripcion, $prioridad);
+        //Enviar los datos a la BBDD
+        $id = insertarTarea($tarea, $descripcion, $prioridad);
 
-    require_once 'templates/header.php';
+        require_once 'templates/header.php';
 
-    if ($id) {
-    echo "Tarea cargada correctamente id= $id";
-    //Yo lo quiero hacer con un boton que me envie a la pagina de inicio...
-    // <button type="button" class="btn btn-secondary">Secondary</button>
-    header('Location: ' . BASE_URL);
-    } else {
-    echo "Error al insertar la tarea!";
+        if ($id) {
+            echo "Tarea cargada correctamente id= $id";
+            //Yo lo quiero hacer con un boton que me envie a la pagina de inicio...
+            // <button type="button" class="btn btn-secondary">Secondary</button>
+            header('Location: ' . BASE_URL);
+        } else {
+            echo "Error al insertar la tarea!";
+        }
+
+        require_once 'templates/footer.php';
+
+    } else{
+        require_once 'templates/header.php';
+        echo "<h2>Falta completar campos obligatorios del formulario</h2>";
+        require_once 'templates/footer.php';
+
     }
 
-    require_once 'templates/footer.php';
     }

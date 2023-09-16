@@ -5,14 +5,16 @@
         <div class="col-9">
             <div class="form-group">
                 <label>Tarea</label>
-                <input required name="tarea" type="text" class="form-control">
+                <!-- required -->
+                <input name="tarea" type="text" class="form-control">
             </div>
         </div>
 
         <div class="col-3">
             <div class="form-group">
                 <label>Prioridad</label>
-                <select required name="prioridad" class="form-control">
+                <!-- required -->
+                <select name="prioridad" class="form-control">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
