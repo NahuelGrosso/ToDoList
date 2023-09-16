@@ -33,3 +33,23 @@ function insertarTarea($tarea, $descripcion, $prioridad){
     
     return $db->lastInsertId();
 }
+
+//Funcion para elimnar Tareas
+function eliminaTarea($id){
+    //1- Abrimos conexion con la BBDD
+    $db = conexionBBD();
+
+    //2- Enviamos y recibimos los resultados de la consulta
+    $consulta = $db->prepare('DELETE FROM tareas WHERE id = ?');
+    $consulta->execute([$id]);
+}
+
+//Funcion para enviar a la BBDD que la tarea se realizo
+function realizada($id){
+    //1- Abrimos conexion con la BBDD
+    $db = conexionBBD();
+
+    //2- Enviamos y recibimos los resultados de la consulta
+    $consulta = $db->prepare('UPDATE tareas SET hecha = 1 WHERE id = ?');
+    $consulta->execute([$id]);
+}

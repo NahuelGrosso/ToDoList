@@ -13,6 +13,8 @@ if (!empty ($_GET{'action'})){
 
 //Mostrar todas las tareas -->       verTareas();
 //Agregar tarea nueva      -->       agregarTarea();
+//Eliminar tarea/:id       -->       eliminarTarea($id);  
+//Tarea  Realizada/:id     -->       tareaRealizada($id);
 
 //Parsea la accion para separar la accion real de los paramentros
 $params = explode('/',$action);
@@ -24,7 +26,12 @@ switch($params[0]){
     case 'agregarTarea':
         agregarTarea();
         break;
-    
+    case 'eliminar':
+        eliminarTarea($params[1]);
+        break;
+    case 'realizada':
+        tareaRealizada($params[1]);
+        break;    
     default:
     echo "ERROR 404";
     break;
