@@ -16,6 +16,11 @@ if (!empty ($_GET{'action'})){
 //Eliminar tarea/:id       -->       eliminarTarea($id);  
 //Tarea  Realizada/:id     -->       tareaRealizada($id);
 
+///            POR MI CUENTA   /////
+//Ver informacion de tarea 
+// informacionTarea/:id    -->       informacionTarea($id);
+
+
 //Parsea la accion para separar la accion real de los paramentros
 $params = explode('/',$action);
 
@@ -26,7 +31,13 @@ switch($params[0]){
     case 'agregarTarea':
         agregarTarea();
         break;
-    case 'eliminar':
+
+   /* case 'informacion':
+        informacionTarea($params[1]);
+        break;
+    */
+    
+        case 'eliminar':
         eliminarTarea($params[1]);
         break;
     case 'realizada':

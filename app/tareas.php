@@ -11,11 +11,9 @@ function verTareas()
 ?>
 
     <div class="container">
+        <?php require_once 'templates/formulario.php';
+        ?>
         <div class="row">
-            <div class="col">
-                <?php require_once 'templates/formulario.php';
-                ?>
-            </div>
             <div class="col">
                 <?php
                 echo "<h1> Tareas a Realizar </h1>";
@@ -24,7 +22,13 @@ function verTareas()
                     <ul class="list-group">
                         <?php foreach ($tareas as $tarea) { ?>
                             <li class="list-group-item">
-                                <b><?php echo $tarea->tarea; ?></b>
+
+                                <!-- POR MI CUENTA con ese link ir a una card donde muestre toda la info de la tarea-->
+                                <a href="mostrar/<?php echo $tarea->id ?>">
+                                    <b><?php echo $tarea->tarea; ?></b>
+                                </a>
+                                <!-- FIN POR MI CUENTA -->
+
                                 <span class="badge bg-primary rounded-pill position-absolute top-0 end-0">Prioridad <?php echo $tarea->prioridad; ?></span>
                                 <div class=" ">
                                     <a href="eliminar/<?php echo $tarea->id ?>">
@@ -42,6 +46,43 @@ function verTareas()
                         <?php } ?>
                     </ul>
                 </div>
+            </div>
+            <div class="col">
+                <!-- Aca va la card de la tarea seleccionada -->
+                <?php
+                  if (!empty($_GET[1])) {
+                    $id = $_GET[1];
+                    $tarea = traerTareas($id);
+                ?>
+                    <!-- card  -->
+                    <h1> Informacion de la tarea </h1>
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <b><?php echo $tarea->tarea; ?></b>
+                            </h4>
+
+                            <span class="badge bg-primary rounded-pill position-absolute top-0 end-0">Prioridad <?php echo $tarea->prioridad; ?></span>
+
+                            <p class="card-text"> <b>Descripción:</b> <?php echo $tarea->descripcion; ?></p>
+
+
+                            <a href="eliminar/<?php echo $tarea->id ?>">
+                                <button type="button" class="btn btn-danger">Eliminar</button>
+                            </a>
+                            <?php if (!$tarea->hecha) { ?>
+                                <a href="realizada/<?php echo $tarea->id ?>">
+                                    <button type="button" class="btn btn-success">Realizada</button>
+                                </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+
+                <?php
+                }
+                ?>
+
+
             <?php
             require_once 'templates/footer.php';
         }
