@@ -50,37 +50,34 @@ function verTareas()
             <div class="col">
                 <!-- Aca va la card de la tarea seleccionada -->
                 <?php
-                  if (!empty($_GET[1])) {
+                /*if (!empty($_GET[1])) {
                     $id = $_GET[1];
                     $tarea = traerTareas($id);
+                    */
                 ?>
-                    <!-- card  -->
-                    <h1> Informacion de la tarea </h1>
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <b><?php echo $tarea->tarea; ?></b>
-                            </h4>
+                <!-- card  -->
+                <h1> Informacion de la tarea </h1>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <b><?php echo $tarea->tarea; ?></b>
+                        </h4>
 
-                            <span class="badge bg-primary rounded-pill position-absolute top-0 end-0">Prioridad <?php echo $tarea->prioridad; ?></span>
+                        <span class="badge bg-primary rounded-pill position-absolute top-0 end-0">Prioridad <?php echo $tarea->prioridad; ?></span>
 
-                            <p class="card-text"> <b>Descripción:</b> <?php echo $tarea->descripcion; ?></p>
+                        <p class="card-text"> <b>Descripción:</b> <?php echo $tarea->descripcion; ?></p>
 
 
-                            <a href="eliminar/<?php echo $tarea->id ?>">
-                                <button type="button" class="btn btn-danger">Eliminar</button>
+                        <a href="eliminar/<?php echo $tarea->id ?>">
+                            <button type="button" class="btn btn-danger">Eliminar</button>
+                        </a>
+                        <?php if (!$tarea->hecha) { ?>
+                            <a href="realizada/<?php echo $tarea->id ?>">
+                                <button type="button" class="btn btn-success">Realizada</button>
                             </a>
-                            <?php if (!$tarea->hecha) { ?>
-                                <a href="realizada/<?php echo $tarea->id ?>">
-                                    <button type="button" class="btn btn-success">Realizada</button>
-                                </a>
-                            <?php } ?>
-                        </div>
+                        <?php } ?>
                     </div>
-
-                <?php
-                }
-                ?>
+                </div>
 
 
             <?php
