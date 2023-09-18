@@ -119,7 +119,32 @@ function verTareas()
                             <b><?php echo $tarea->tarea; ?></b>
                         </h4>
 
-                        <span class="badge bg-primary rounded-pill position-absolute top-0 end-0">Prioridad <?php echo $tarea->prioridad; ?></span>
+                        <span class="badge <?php
+
+                                            //si prioridad es == 1 => verde     text-bg-secondary
+                                            //si es           == 2 => celeste   text-bg-info
+                                            //si es           == 3 => azul      text-bg-primary
+                                            //si es           == 4 => amarillo  text-bg-warning
+                                            //si es           == 5 => rojo      text-bg-danger
+
+                                            switch ($tarea->prioridad) {
+                                                case $tarea->prioridad == 1:
+                                                    echo "bg-secondary";
+                                                    break;
+                                                case $tarea->prioridad == 2:
+                                                    echo "bg-info";
+                                                    break;
+                                                case $tarea->prioridad == 3:
+                                                    echo "bg-primary";
+                                                    break;
+                                                case $tarea->prioridad == 4:
+                                                    echo "bg-warning";
+                                                    break;
+                                                case $tarea->prioridad == 5:
+                                                    echo "bg-danger";
+                                                    break;
+                                            }
+                                            ?> rounded-pill position-absolute top-0 end-0">Prioridad <?php echo $tarea->prioridad; ?></span>
 
                         <p class="card-text"> <b>Descripción:</b> <?php echo $tarea->descripcion; ?></p>
 
